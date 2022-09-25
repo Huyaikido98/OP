@@ -1,0 +1,22 @@
+<ion-content>
+  <div class="header">
+    <h3>Welcome</h3>
+    <h1>Please Login<br>To Continue</h1>
+  </div>
+
+  <!-- <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)"> -->
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form">
+        <!-- <ion-input type="text" id="email" [(ngModel)]="email" name="email"></ion-input>
+        <ion-input type="password" id="passwd" [(ngModel)]="passwd" name="passwd"></ion-input> -->
+        <ion-input type="text" formControlName="username" required></ion-input>
+        <ion-input type="password" formControlName="password" required></ion-input>
+    </div>
+    <button ion-button type="submit" class="btn btn-success">
+      Login
+    </button>
+</form>
+  <div class="footer">
+    <h3 routerLink="">Don't have a account? <span>Sign Up</span></h3>
+  </div>
+</ion-content>

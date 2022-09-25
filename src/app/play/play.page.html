@@ -1,0 +1,30 @@
+<div id="container">
+  <div id="side-content">
+    <div class="panel">
+      <play-control [title]="title" [mode]="mode" (modeSelected)="handleModeSelected($event)"></play-control>
+    </div>
+    <div class="panel">
+      <ng-template *ngIf="(mode == PianoMode.Play)" >
+         <note-info></note-info>
+      </ng-template>
+      <ng-template *ngIf="(mode == PianoMode.Quiz)" >
+         <quiz-info
+            [status]="quizStatus"
+            [correct]="quizCorrect"
+            [incorrect]="quizIncorrect"
+            [total]="quizLength"
+            [description]="resultDescription"
+            (buttonClicked)="handleButtonClicked($event)">
+         </quiz-info>
+      </ng-template>
+    </div>
+  </div>
+  <div id="notation-component">
+    <notation [mode]="mode"></notation>
+  </div>
+  <div id="keyboard-component">
+    <keyboard (keyPlayed)="handleKeyPlayed($event)"></keyboard>
+  </div>
+  <p id="appDetails">Built with <a href="https://angular.io/" target="_blank">Angular</a> (v8.2.14)- Source available on <a href="https://github.com/deanmalone/PianoPlay/" target="_blank">GitHub</a></p>
+</div>
+
