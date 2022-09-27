@@ -24,14 +24,19 @@ export class ServerHttpService {
 
   public addUser(data): Observable<any> {
     const url = `${this.REST_API_SERVER}/user/login`;
-    this.router.navigate(['/list']);
+    this.router.navigate(['/']);
     return this.httpClient
       .post<any>(url, data, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
   public getProducts(): Observable<any> {
-    const url = `${this.REST_API_SERVER}/admin/products`;
+    const url = `${this.REST_API_SERVER}/user/products?customer_id=4`;
+    return this.httpClient.get<any>(url, this.httpOptions);
+  }
+
+  public getLessons(): Observable<any> {
+    const url = `${this.REST_API_SERVER}/user/lessons?user_id=4`;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 

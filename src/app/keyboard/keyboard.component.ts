@@ -7,7 +7,7 @@ import { QuizService } from '../Services/quiz.service';
 @Component({
   selector: 'keyboard',
   templateUrl: './keyboard.component.html',
-  styleUrls: ['./keyboard.component.scss'],
+  styleUrls: ['./keyboard.component.css'],
 })
 export class KeyboardComponent implements OnInit {
 

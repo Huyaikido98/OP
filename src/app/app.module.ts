@@ -13,7 +13,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { KeyboardComponent } from './keyboard/keyboard.component';
 import { NotationComponent } from './notation/notation.component';
-// import { PlayControlComponent } from './play-control/play-control.component';
+import { PlayControlComponent } from './play-control/play-control.component';
 import { NoteInfoComponent } from './note-info/note-info.component';
 import { QuizInfoComponent } from './quiz-info/quiz-info.component';
 import { PianoService } from './Services/piano.service';
@@ -27,11 +27,11 @@ import { PlayPage } from './play/play.page';
 @NgModule({
   declarations: [
     PlayPage,
-    AppComponent, 
-    LoginFormComponent, 
-    KeyboardComponent, 
+    AppComponent,
+    LoginFormComponent,
+    KeyboardComponent,
     NotationComponent,
-    // PlayControlComponent,
+    PlayControlComponent,
     NoteInfoComponent,
     QuizInfoComponent,
     SafePipe

@@ -3,12 +3,12 @@ import { Subscription }   from 'rxjs';
 
 import { PianoNote } from '../core/piano-note';
 import { QuizService } from 'src/app/Services/quiz.service';
-import { QuizStatus } from '../core/quiz-status.enum';
+import { QuizStatus } from 'src/app/core/quiz-status.enum';
 
 @Component({
   selector: 'quiz-info',
   templateUrl: './quiz-info.component.html',
-  styleUrls: ['./quiz-info.component.scss'],
+  styleUrls: ['./quiz-info.component.css'],
 })
 export class QuizInfoComponent implements OnInit {
   QuizStatus = QuizStatus; // allows template access to QuizStatus enum

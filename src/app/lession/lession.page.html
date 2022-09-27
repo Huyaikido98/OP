@@ -1,19 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      LIST
+      LESSON
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
-  <ion-list lines="none" *ngFor = "let product of products">
+  <ion-list lines="none" *ngFor = "let lesson of lessons">
     <ion-item href detail>
       <ion-thumbnail class="ion-margin-end">
-        <ion-img src="">{{ product?.image }}</ion-img>
       </ion-thumbnail>
-      <ion-label class="ion-text-wrap" [routerLink]="['/prod-detail']" >{{ product?.name }}</ion-label>
+      <ion-label class="ion-text-wrap" [routerLink]="['/play']">{{ lesson?.lesson_title }}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

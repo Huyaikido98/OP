@@ -4,9 +4,9 @@
       <play-control [title]="title" [mode]="mode" (modeSelected)="handleModeSelected($event)"></play-control>
     </div>
     <div class="panel">
-      <ng-template *ngIf="(mode == PianoMode.Play)" >
+      <ng-container *ngIf="(mode == PianoMode.Play)" >
          <note-info></note-info>
-      </ng-template>
+      </ng-container>
       <ng-template *ngIf="(mode == PianoMode.Quiz)" >
          <quiz-info
             [status]="quizStatus"

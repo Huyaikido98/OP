@@ -5,7 +5,7 @@ import { PianoMode } from '../core/piano-mode.enum';
 @Component({
   selector: 'play-control',
   templateUrl: './play-control.component.html',
-  styleUrls: ['./play-control.component.scss'],
+  styleUrls: ['./play-control.component.css'],
 })
 export class PlayControlComponent implements OnInit {
   PianoMode = PianoMode; // allows template access to PianoMode enum

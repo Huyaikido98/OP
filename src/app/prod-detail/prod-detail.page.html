@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>prodDetail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngFor = "let product of products">
+  <ion-label>{{ product?.name }}</ion-label>
+  <br>
+  <button (click)="downloadFliePdf()">Download Pdf</button>
+  <button (click)="downloadFlieMid()">Download Midi</button>
+<ion-item></ion-item>
+</ion-content>

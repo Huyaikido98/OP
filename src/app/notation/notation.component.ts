@@ -13,7 +13,7 @@ declare var $: any;
 @Component({
   selector: 'notation',
   templateUrl: './notation.component.html',
-  styleUrls: ['./notation.component.scss'],
+  styleUrls: ['./notation.component.css'],
 })
 export class NotationComponent implements OnInit, AfterViewChecked  {
   @Input() mode: PianoMode;
