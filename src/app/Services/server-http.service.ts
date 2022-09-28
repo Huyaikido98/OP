@@ -17,20 +17,29 @@ export class ServerHttpService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       // 'Authorzation': ''
+      'cookie': ''
     })
   };
 
   constructor(private httpClient: HttpClient, private router: Router) { }
-  public message = null;
+  // public message = null;
   public addUser(data): Observable<any> {
     const url = `${this.REST_API_SERVER}/user/login`;
-    if(this.message === "Success") {
-      this.router.navigate(['/']);
-    } else 
-    this.router.navigate(['/loginForm']);
+    // if(this.message === "Success") {
+    //   this.router.navigate(['/']);
+    // } else 
+    // this.router.navigate(['/loginForm']);
     return this.httpClient
       .post<any>(url, data, this.httpOptions)
       .pipe(catchError(this.handleError));
+  }
+  public cookie = localStorage.getItem('cookie');
+  
+  public postAuthCookie(cookie): Observable<any> {
+    const url = `${this.REST_API_SERVER}/user/validate_auth_cookie`;
+    return this.httpClient
+    .post<any>(url, cookie, this.httpOptions)
+    .pipe(catchError(this.handleError));
   }
 
   public getProducts(): Observable<any> {
