@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { ServerHttpService } from '../Services/server-http.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginFormComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl(''),
   });
-  constructor(private serverHttp: ServerHttpService) { }
+  constructor(private serverHttp: ServerHttpService, private router: Router) { }
 
   ngOnInit() {}
 
@@ -26,8 +27,17 @@ export class LoginFormComponent implements OnInit {
       }
     }
     console.log(newUser);
-    this.serverHttp.addUser(newUser).subscribe(data => {
-      console.log(data);
-    }); 
+    this.serverHttp.addUser(newUser).subscribe(response => {
+      console.log(response.cookie);
+      const cookie = (response.cookie);
+      localStorage.setItem(cookie, cookie);
+      console.log(localStorage)
+
+      // this.serverHttp.headers(cookie).subscribe(response => {
+      //   console.log('da gui cookie');
+      //   if(response.valid)
+      //   console.log('ok vai lon');
+      // })
+    })
   }
 }
