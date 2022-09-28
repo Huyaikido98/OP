@@ -16,15 +16,18 @@ export class ServerHttpService {
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorzation': 'macbook.pro|1662355052|F5FKwW3VcwyuoI81ZKX51HApmmgi8jNtbTplBq8KGEP|1051697120bc47ba5b88d8e475782279492876d7168886418e44ed85720ba0d9'
+      // 'Authorzation': ''
     })
   };
 
   constructor(private httpClient: HttpClient, private router: Router) { }
-
+  public message = null;
   public addUser(data): Observable<any> {
     const url = `${this.REST_API_SERVER}/user/login`;
-    this.router.navigate(['/']);
+    if(this.message === "Success") {
+      this.router.navigate(['/']);
+    } else 
+    this.router.navigate(['/loginForm']);
     return this.httpClient
       .post<any>(url, data, this.httpOptions)
       .pipe(catchError(this.handleError));
