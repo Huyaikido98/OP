@@ -13,10 +13,9 @@ export class ListPage implements OnInit {
   constructor(private serverHttp: ServerHttpService) { }
 
   public ngOnInit(): void {
-    this.serverHttp.getProducts().subscribe((data) =>  {
-      console.log('getProducts', data);
+    this.serverHttp.getProducts().subscribe(data =>  {
+      console.log(data);
       this.products = data;
     });
   }
-
 }

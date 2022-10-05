@@ -1,5 +1,6 @@
 <ion-content>
 <h1>Home Word</h1>
+<div (ngSubmit)="onClick()">
 <a [routerLink]="['/loginForm']" routerLinkActive="router-link-active">Login</a>
 <br>
 <a [routerLink]="['/play']" routerLinkActive="router-link-active">Play</a>
@@ -7,5 +8,9 @@
 <a [routerLink]="['/list']" routerLinkActive="router-link-active">list</a>
 <br>
 <a [routerLink]="['/lession']" routerLinkActive="router-link-active">lession</a>
-
+<br>
+<ion-button (click)="ServerHttpService.logoutUser()">
+    Logout
+</ion-button>
+</div>
 </ion-content>

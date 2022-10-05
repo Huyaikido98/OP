@@ -12,44 +12,56 @@ import {map, catchError} from 'rxjs/operators';
 })
 
 export class ServerHttpService {
-  private REST_API_SERVER = 'http://34.101.62.222:9090';
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      // 'Authorzation': ''
-      'cookie': ''
-    })
-  };
 
   constructor(private httpClient: HttpClient, private router: Router) { }
-  // public message = null;
-  public addUser(data): Observable<any> {
-    const url = `${this.REST_API_SERVER}/user/login`;
-    // if(this.message === "Success") {
-    //   this.router.navigate(['/']);
-    // } else 
-    // this.router.navigate(['/loginForm']);
-    return this.httpClient
-      .post<any>(url, data, this.httpOptions)
-      .pipe(catchError(this.handleError));
-  }
-  public cookie = localStorage.getItem('cookie');
+
+  private REST_API_SERVER = 'http://34.101.62.222:9090';
   
-  public postAuthCookie(cookie): Observable<any> {
-    const url = `${this.REST_API_SERVER}/user/validate_auth_cookie`;
+  userLogin(data): Observable<any> {
+    const url = `${this.REST_API_SERVER}/user/login`;
     return this.httpClient
-    .post<any>(url, cookie, this.httpOptions)
-    .pipe(catchError(this.handleError));
+      .post<any>(url, data)
+      .pipe(catchError(this.handleError));
+}
+
+  getProducts(): Observable<any> {
+    const customer_id = localStorage.getItem('id')
+    const url = `${this.REST_API_SERVER}/user/products?customer_id=${customer_id}`;
+    const cc = localStorage.getItem('cookie')
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        // 'Authorzation': ''
+        'check': cc,
+      })
+    };
+    if(cc) {
+      return this.httpClient
+        .get<any>(url, httpOptions);
+    }
   }
 
-  public getProducts(): Observable<any> {
-    const url = `${this.REST_API_SERVER}/user/products?customer_id=4`;
-    return this.httpClient.get<any>(url, this.httpOptions);
-  }
-
-  public getLessons(): Observable<any> {
+  getLessons(): Observable<any> {
+    
     const url = `${this.REST_API_SERVER}/user/lessons?user_id=4`;
-    return this.httpClient.get<any>(url, this.httpOptions);
+    const cc = localStorage.getItem('cookie')
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        // 'Authorzation': ''
+        'check': cc,
+      })
+    };
+    if(cc) {
+    return this.httpClient
+      .get<any>(url,httpOptions)
+      .pipe(catchError(this.handleError));
+    }
+  }
+
+  logoutUser() {
+    localStorage.removeItem('cookie')
+    this.router.navigate(['/loginForm'])
   }
 
   private handleError(error: HttpErrorResponse) {
