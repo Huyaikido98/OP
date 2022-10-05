@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { ServerHttpService } from '../Services/server-http.service';
 import { Router } from '@angular/router';
+import { infoLogin } from '../models/products/infoLogin';
 
 
 @Component({
@@ -18,26 +19,22 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit() {}
 
-  public onSubmit(){
+  public onSubmit() {
     console.log('onSubmit');
+    const info: infoLogin[] = [];
     const newUser = {};
     for (const controlName in this.loginForm.controls) {
       if(controlName) {
         newUser[controlName] = this.loginForm.controls[controlName].value;
       }
     }
-    console.log(newUser);
-    this.serverHttp.addUser(newUser).subscribe(response => {
-      console.log(response.cookie);
-      const cookie = (response.cookie);
-      localStorage.setItem(cookie, cookie);
-      console.log(localStorage)
-
-      // this.serverHttp.headers(cookie).subscribe(response => {
-      //   console.log('da gui cookie');
-      //   if(response.valid)
-      //   console.log('ok vai lon');
-      // })
-    })
-  }
+    console.log(newUser)
+    this.serverHttp.userLogin(newUser).subscribe(response => {
+        localStorage.setItem('info', response.info?id);
+        localStorage.setItem('cookie', response.cookie);
+        console.log(localStorage);
+      if(response.message)
+        this.router.navigate(['/']);
+    }
+  )}
 }
