@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { ServerHttpService } from '../Services/server-http.service';
 import { Router } from '@angular/router';
-import { infoLogin } from '../models/products/infoLogin';
 
 
 @Component({
@@ -21,7 +20,6 @@ export class LoginFormComponent implements OnInit {
 
   public onSubmit() {
     console.log('onSubmit');
-    const info: infoLogin[] = [];
     const newUser = {};
     for (const controlName in this.loginForm.controls) {
       if(controlName) {
@@ -30,7 +28,7 @@ export class LoginFormComponent implements OnInit {
     }
     console.log(newUser)
     this.serverHttp.userLogin(newUser).subscribe(response => {
-        localStorage.setItem('info', response.info?id);
+        localStorage.setItem('id', response.info.id);
         localStorage.setItem('cookie', response.cookie);
         console.log(localStorage);
       if(response.message)

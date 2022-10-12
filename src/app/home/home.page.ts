@@ -13,10 +13,10 @@ export class HomePage {
 
   ngOnInit() {}
 
-  // public click(){
-  //   console.log('onClick')
-  //   localStorage.removeItem('cookie')
-  //   console.log(localStorage)
-  //   this.router.navigate(['/loginForm'])
-  // }
+  public logout(){
+    console.log('onClick')
+    localStorage.clear();
+    console.log(localStorage)
+    this.router.navigate(['/loginForm'])
+  }
 }

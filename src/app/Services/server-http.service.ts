@@ -42,8 +42,8 @@ export class ServerHttpService {
   }
 
   getLessons(): Observable<any> {
-    
-    const url = `${this.REST_API_SERVER}/user/lessons?user_id=4`;
+    const customer_id = localStorage.getItem('id')
+    const url = `${this.REST_API_SERVER}/user/lessons?user_id=${customer_id}`;
     const cc = localStorage.getItem('cookie')
     const httpOptions = {
       headers: new HttpHeaders({
